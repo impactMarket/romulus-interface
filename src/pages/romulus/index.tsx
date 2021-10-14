@@ -29,14 +29,23 @@ const governances: Governance[] = [
     },
     icon: "/assets/asset_UBE.png",
   },
+  {
+    name: "impactMarket",
+    addresses: {
+      [ChainId.Mainnet]: "",
+      [ChainId.Alfajores]: "0xA25f3844F07045976e671e9dA3e7F0973bB8dc59",
+      [ChainId.Baklava]: "",
+    },
+    icon: "/assets/asset_IMPACT.png",
+  },
 ];
 
 export const governanceLookup = governances.reduce((acc, curr) => {
   Object.values(curr.addresses).forEach((address) => {
-    acc[address] = curr.name;
+    acc[address] = curr;
   });
   return acc;
-}, {} as Record<Address, string>);
+}, {} as Record<Address, Governance>);
 
 const RomulusIndexPage: React.FC = () => {
   const router = useRouter();

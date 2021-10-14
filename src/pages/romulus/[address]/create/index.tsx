@@ -17,7 +17,7 @@ const RomulusIndexPage: React.FC = () => {
   };
   const { address: romulusAddress } = router.query;
   const governanceName = romulusAddress
-    ? governanceLookup[romulusAddress.toString()]
+    ? governanceLookup[romulusAddress.toString()]?.name
     : "Unknown";
   const getConnectedSigner = useGetConnectedSigner();
   const [targets, setTargets] = React.useState<string[]>([]);
