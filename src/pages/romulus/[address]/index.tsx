@@ -117,7 +117,7 @@ const RomulusIndexPage: React.FC = () => {
   return (
     <>
       <Flex>
-        <Box>
+        <Box style={{ flex: 1 }}>
           <Box
             mb={4}
             style={{
@@ -248,14 +248,14 @@ const RomulusIndexPage: React.FC = () => {
         </Box>
         <div style={{ width: 35 }} />
 
-        <Box sx={{ flex: "1 1 auto" }} hidden={viewingTab !== "delegators"}>
+        <Box style={{ flex: 2 }} hidden={viewingTab !== "delegators"}>
           <Heading as="h2" mb={3}>
             Top delegates
           </Heading>
           <TopDelegates romulusAddress={romulusAddress as string} />
         </Box>
 
-        <Box sx={{ flex: "1 1 auto" }} hidden={viewingTab !== "proposals"}>
+        <Box style={{ flex: 2 }} hidden={viewingTab !== "proposals"}>
           <Box
             mb={4}
             style={{ display: "flex", justifyContent: "space-between" }}
