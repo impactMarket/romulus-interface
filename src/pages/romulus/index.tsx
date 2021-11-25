@@ -33,7 +33,7 @@ const governances: Governance[] = [
     name: "impactMarket",
     addresses: {
       [ChainId.Mainnet]: "",
-      [ChainId.Alfajores]: "0x6b69e79B899e634092384Be1d09a41B6f4886a6e",
+      [ChainId.Alfajores]: "0xE2cc4203117a2f753e9a86630B51e1128528ECB5",
       [ChainId.Baklava]: "",
     },
     icon: "/assets/asset_IMPACT.png",
