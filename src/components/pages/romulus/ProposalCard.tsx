@@ -1,21 +1,20 @@
 import { useContractKit } from "@celo-tools/use-contractkit";
-import { useGetConnectedSigner } from "../../../hooks/useProviderOrSigner";
 import { BigNumber } from "ethers";
 import moment from "moment";
 import { useRouter } from "next/router";
 import React from "react";
 import { Box, Button, Card, Flex, Heading, Text } from "theme-ui";
+
 import { Address } from "../../../components/common/Address";
 import { RomulusDelegate__factory } from "../../../generated";
 import { TypedEvent } from "../../../generated/commons";
+import { useProposal } from "../../../hooks/romulus/useProposal";
 import { useVoteCasts } from "../../../hooks/romulus/useVoteCasts";
 import { useVotingTokens } from "../../../hooks/romulus/useVotingTokens";
-
 import { useAsyncState } from "../../../hooks/useAsyncState";
-import { BIG_ZERO } from "../../../util/constants";
-import { humanFriendlyWei } from "../../../util/number";
-import { useProposal } from "../../../hooks/romulus/useProposal";
+import { useGetConnectedSigner } from "../../../hooks/useProviderOrSigner";
 import { ProposalState, Support } from "../../../types/romulus";
+import { humanFriendlyWei } from "../../../util/number";
 
 interface IProps {
   proposalEvent: TypedEvent<
@@ -160,8 +159,8 @@ export const ProposalCard: React.FC<IProps> = ({ proposalEvent }) => {
     voteContent = <Text>Proposal has been canceled.</Text>;
   } else if (proposalEvent.args.startBlock.gt(latestBlockNumber)) {
     voteContent = <Text>Voting has not started yet.</Text>;
-  } else if (votingPower.add(releaseVotingPower).lte(BIG_ZERO)) {
-    voteContent = <Text>You have no voting power for this proposal.</Text>;
+    // } else if (votingPower.add(releaseVotingPower).lte(BIG_ZERO)) {
+    //   voteContent = <Text>You have no voting power for this proposal.</Text>;
   } else if (vote) {
     let supportText = <></>;
     if (vote.args.support === Support.FOR) {
